@@ -7,8 +7,8 @@ from ..serializers.studentSerializer import StudentSerializer
 
 class StudentList(APIView):
     def get(self, request):
-        student = StudentModel.objects.all()
-        serializer = StudentSerializer(student, many=True)
+        students = StudentModel.objects.all()
+        serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
 
     def post(self, request):

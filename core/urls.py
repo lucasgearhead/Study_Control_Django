@@ -1,11 +1,19 @@
 from django.urls import path
-from ..studyControl.views
+
+from studyControl.views.disciplineView import DisciplineDetail, DisciplineList
+from studyControl.views.studentView import StudentDetail, StudentList
+from studyControl.views.taskView import TaskDetail,TaskList
 
 urlpatterns = [
-    path('api/alunos/', AlunoListCreateView.as_view(), name='aluno-list-create'),
-    path('api/alunos/<int:pk>/', AlunoDetailView.as_view(), name='aluno-detail'),
-    path('api/disciplinas/', DisciplinaListCreateView.as_view(), name='disciplina-list-create'),
-    path('api/disciplinas/<int:pk>/', DisciplinaDetailView.as_view(), name='disciplina-detail'),
-    path('api/tarefas/', TarefaListCreateView.as_view(), name='tarefa-list-create'),
-    path('api/tarefas/<int:pk>/', TarefaDetailView.as_view(), name='tarefa-detail'),
+    # URLs para Aluno
+    path('students', StudentList.as_view(), name='student-list'),
+    path('students/<int:pk>/', StudentDetail.as_view(), name='student-detail'),
+
+    # URLs para Disciplina
+    path('disciplines/', DisciplineList.as_view(), name='discipline-list'),
+    path('disciplines/<int:pk>/', DisciplineDetail.as_view(), name='discipline-detail'),
+
+    # URLs para Tarefa
+    path('tasks/', TaskList.as_view(), name='task-list'),
+    path('tasks/<int:pk>/', TaskDetail.as_view(), name='task-detail'),
 ]
