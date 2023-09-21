@@ -6,12 +6,12 @@ from ..models.taskModel import TaskModel
 from ..serializers.taskSerializer import TaskSerializer
 
 class StudentTaskView(APIView):
-    def get(self, request, aluno_id):
+    def get(self, request, student_id):
         try:
-            aluno = StudentModel.objects.get(pk=aluno_id)
+            student = StudentModel.objects.get(pk=student_id)
         except StudentModel.DoesNotExist:
             return Response({"error": "Aluno não encontrado."}, status=status.HTTP_404_NOT_FOUND)
 
-        tarefas = TaskModel.objects.filter(aluno=aluno)
-        serializer = TaskSerializer(tarefas, many=True)
+        tasks = TaskModel.objects.filter(student=student)
+        serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
