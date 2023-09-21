@@ -1,3 +1,3 @@
-from .disciplineModel import DisciplineModel
-from .studentModel import StudentModel
-from .taskModel import TaskModel
+from .task import Task
+from .student import Student
+from .subject import Subject
