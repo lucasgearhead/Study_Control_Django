@@ -12,6 +12,7 @@ class DisciplineList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        
         serializer = DisciplineSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
