@@ -50,8 +50,6 @@ A API oferece os seguintes endpoints:
 5. **Exclusão de um Aluno**:
    - `DELETE /api/alunos/<id>/`: Permite a exclusão de um aluno específico com base no ID. Todas as tarefas associadas a esse aluno serão excluídas ou desassociadas.
 
-(Continue a lista com os endpoints de Disciplinas e Tarefas)
-
 ## Documentação da API
 
 A documentação da API está disponível em `<URL da documentação>`. Ela fornece informações detalhadas sobre como usar cada endpoint, incluindo exemplos de solicitações e respostas. Certifique-se de consultar a documentação para entender e usar todas as operações disponíveis na API de forma eficaz.
@@ -143,8 +141,6 @@ The API offers the following endpoints:
 
 5. **Delete Student**:
    - `DELETE /api/students/<id>/`: Permits the deletion of a specific student based on their ID. All tasks associated with that student will be deleted or disassociated.
-
-(Continue the list with Subject and Task endpoints)
 
 ## API Documentation
 
