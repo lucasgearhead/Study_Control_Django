@@ -72,9 +72,7 @@ A API realiza validações adequadas dos dados de entrada, incluindo a verifica�
 
 Os nomes de endpoints, campos de modelos e respostas da API seguem uma nomenclatura consistente e fácil de entender, seguindo as convenções recomendadas.
 
----
 
-Esta é uma visão geral do README para a aplicação. Certifique-se de preencher os detalhes específicos, como URLs, informações sobre como configurar o ambiente de produção, e quaisquer outros detalhes relevantes para os desenvolvedores que usarão sua API.
 
 
 
@@ -167,7 +165,3 @@ The API performs proper data validation for input data, including checking dates
 ## Naming Consistency
 
 Endpoint names, model fields, and API responses follow a consistent and easily understandable naming convention, following recommended conventions.
-
----
-
-This is an overview of the README for the application. Be sure to fill in specific details such as URLs, information on setting up the production environment, and any other relevant information for developers who will be using your API.
