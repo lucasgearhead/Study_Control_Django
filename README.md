@@ -63,25 +63,25 @@ A API oferece os seguintes endpoints:
    - `PUT /api/subjects/<id>/`: Permite a atualização dos detalhes de um aluno específico com base no ID.
 
 10. **Exclusão de uma Disciplina**:
-   - `DELETE /api/subjects/<id>/`: Permite a exclusão de um aluno específico com base no ID. Todas as tarefas associadas a esse aluno serão excluídas ou desassociadas.
+    - `DELETE /api/subjects/<id>/`: Permite a exclusão de um aluno específico com base no ID. Todas as tarefas associadas a esse aluno serão excluídas ou desassociadas.
 
 11. **Listagem de Tarefas**:
-   - `GET /api/tasks/`: Retorna a lista de todos os alunos.
+    - `GET /api/tasks/`: Retorna a lista de todos os alunos.
 
 12. **Criação de uma Tarefa**:
-   - `POST /api/tasks/`: Permite a criação de um novo aluno.
+    - `POST /api/tasks/`: Permite a criação de um novo aluno.
 
 13. **Detalhes da Tarefa**:
-   - `GET /api/tasks/<id>/`: Retorna detalhes de um aluno específico com base no ID.
+    - `GET /api/tasks/<id>/`: Retorna detalhes de um aluno específico com base no ID.
 
 14. **Atualização de uma Tarefa**:
-   - `PUT /api/tasks/<id>/`: Permite a atualização dos detalhes de um aluno específico com base no ID.
+    - `PUT /api/tasks/<id>/`: Permite a atualização dos detalhes de um aluno específico com base no ID.
 
 15. **Exclusão de uma Tarefa**:
-   - `DELETE /api/tasks/<id>/`: Permite a exclusão de um aluno específico com base no ID. Todas as tarefas associadas a esse aluno serão excluídas ou desassociadas.
+    - `DELETE /api/tasks/<id>/`: Permite a exclusão de um aluno específico com base no ID. Todas as tarefas associadas a esse aluno serão excluídas ou desassociadas.
 
 16. **Listagem de Tarefas de um Aluno**:
-   - `GET /api/students/<id>/tasks/`: Retorna a lista de todas as tarefas associadas a um aluno específico.
+    - `GET /api/students/<id>/tasks/`: Retorna a lista de todas as tarefas associadas a um aluno específico.
 
 
 ## Documentação da API
