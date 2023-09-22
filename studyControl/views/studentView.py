@@ -4,81 +4,49 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-# Importando o modelo Student e o serializador StudentSerializer do seu aplicativo (assumindo que existem)
+# Importando o modelo Student e o serializador StudentSerializer do app
 from ..models.student import Student
 from ..serializers.studentSerializer import StudentSerializer
 
 # Definindo a classe de visualização 'StudentListCreateView' que herda de 'APIView'
 class StudentListCreateView(APIView):
     def get(self, request):
-        # Obtém todos os estudantes do banco de dados
-        students = Student.objects.all()
-        
-        # Serializa a lista de estudantes
-        serializer = StudentSerializer(students, many=True)
-        
-        # Retorna os dados serializados em uma resposta HTTP
-        return Response(serializer.data)
+        students = Student.objects.all() # Obtém todos os estudantes do banco de dados
+        serializer = StudentSerializer(students, many=True) # Serializa a lista de estudantes
+        return Response(serializer.data) # Retorna os dados serializados em uma resposta HTTP
 
     def post(self, request):
-        # Serializa os dados recebidos na requisição
-        serializer = StudentSerializer(data=request.data)
+        serializer = StudentSerializer(data=request.data) # Serializa os dados recebidos na requisição
+        if serializer.is_valid(): # Verifica se os dados são válidos
+            serializer.save() # Salva o objeto Student no banco de dados
+            return Response(serializer.data, status=status.HTTP_201_CREATED) # Retorna os dados serializados em uma resposta HTTP com status 201 (Created)
         
-        # Verifica se os dados são válidos
-        if serializer.is_valid():
-            # Salva o objeto Student no banco de dados
-            serializer.save()
-            
-            # Retorna os dados serializados em uma resposta HTTP com status 201 (Created)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
-        # Se os dados não forem válidos, retorna os erros em uma resposta HTTP com status 400 (Bad Request)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) # Se inválidos, retorna os erros em uma resposta HTTP com status 400 (Bad Request)
 
 # Definindo a classe de visualização 'StudentDetailView' que herda de 'APIView'
 class StudentDetailView(APIView):
     def get_object(self, pk):
         try:
-            # Tenta obter um objeto Student com base no 'pk' fornecido
-            return Student.objects.get(pk=pk)
+            return Student.objects.get(pk=pk) # Tenta obter um objeto Student com base no primary-key fornecido
         except Student.DoesNotExist:
-            # Se o Student não existe, levanta uma exceção Http404
-            raise Http404
+            raise Http404 # Se o Student não existe, levanta uma exceção Http404 "não encontrado"
 
     def get(self, request, pk):
-        # Obtém o objeto Student com base no 'pk'
-        student = self.get_object(pk)
-        
-        # Serializa o objeto Student
-        serializer = StudentSerializer(student)
-        
-        # Retorna os dados serializados em uma resposta HTTP
-        return Response(serializer.data)
+        student = self.get_object(pk) # Obtém o objeto Student com base na primary-key
+        serializer = StudentSerializer(student) # Serializa o objeto Student
+        return Response(serializer.data) # Retorna os dados serializados em uma resposta HTTP
 
     def put(self, request, pk):
-        # Obtém o objeto Student com base no 'pk'
-        student = self.get_object(pk)
+        student = self.get_object(pk) # Obtém o objeto Student com base na primary-key
+        serializer = StudentSerializer(student, data=request.data) # Serializa os dados recebidos na requisição e associa-os ao objeto Student
         
-        # Serializa os dados recebidos na requisição e associa-os ao objeto Student
-        serializer = StudentSerializer(student, data=request.data)
+        if serializer.is_valid(): # Verifica se os dados são válidos
+            serializer.save() # Salva as alterações no objeto Student no banco de dados
+            return Response(serializer.data) # Retorna os dados serializados em uma resposta HTTP
         
-        # Verifica se os dados são válidos
-        if serializer.is_valid():
-            # Salva as alterações no objeto Student no banco de dados
-            serializer.save()
-            
-            # Retorna os dados serializados em uma resposta HTTP
-            return Response(serializer.data)
-        
-        # Se os dados não forem válidos, retorna os erros em uma resposta HTTP com status 400 (Bad Request)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) # Se inválidos, retorna os erros em uma resposta HTTP com status 400 (Bad Request)
 
     def delete(self, request, pk):
-        # Obtém o objeto Student com base no 'pk'
-        student = self.get_object(pk)
-        
-        # Exclui o objeto Student do banco de dados
-        student.delete()
-        
-        # Retorna uma resposta HTTP com status 204 (No Content) indicando que o objeto foi excluído com sucesso
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        student = self.get_object(pk) # Obtém o objeto Student com base na primary-key
+        student.delete() # Exclui o objeto Student do banco de dados
+        return Response(status=status.HTTP_204_NO_CONTENT) # Retorna uma resposta HTTP com status 204 (No Content) indicando que o objeto foi excluído
